@@ -7,7 +7,8 @@ export default {
   theme: {
     extend: {
       fontFamily:{
-        knewave:['"Knewave", system-ui']
+        knewave:['"Knewave", system-ui'],
+        raleway:['"Raleway", sans-serif']
       }
     },
   },

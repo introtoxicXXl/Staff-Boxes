@@ -1,11 +1,12 @@
 import { Helmet } from "react-helmet";
+import Banner from "./Banner";
 
 const Home = () => {
 
     return (
         <div>
             <Helmet><title>Home</title></Helmet>
-            <h1>This is Home</h1>
+            <Banner/>
         </div>
     );
 };

@@ -5,13 +5,13 @@ const Navbar = () => {
 
     return (
         <nav className="bg-[#fff] fixed w-full z-20 top-0 start-0 shadow border-gray-200 dark:border-gray-600">
-            <div className=" flex flex-wrap items-center justify-between mx-auto p-4 container mx-auto">
+            <div className=" flex flex-wrap items-center justify-between mx-auto p-4 container">
                 <Link to='/' className="" >
                     <img className='w-14 ml-4' src={logo} alt="" />
                     <p className='rotate-[2deg] text-lg font-knewave'><span className='text-[#16A7FC]'>Stuff</span> Boxes</p>
                 </Link>
                 <div className="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse items-center">
-                    <button type="button" className="btn btn-outline btn-accent">Login</button>
+                    <button type="button" className="btn btn-outline hover:text-white btn-accent">Login</button>
 
                     <button data-collapse-toggle="navbar-sticky" type="button" className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-white rounded-lg md:hidden focus:outline-none focus:ring-2 focus:ring-[#16A7FC] bg-[#16A7FC]" aria-controls="navbar-sticky" aria-expanded="false">
                         <span className="sr-only">Open main menu</span>
