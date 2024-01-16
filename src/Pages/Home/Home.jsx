@@ -1,5 +1,6 @@
 import { Helmet } from "react-helmet";
 import Banner from "./Banner";
+import Feature from "./Feature";
 
 const Home = () => {
 
@@ -7,6 +8,7 @@ const Home = () => {
         <div>
             <Helmet><title>Home</title></Helmet>
             <Banner/>
+            <Feature/>
         </div>
     );
 };
