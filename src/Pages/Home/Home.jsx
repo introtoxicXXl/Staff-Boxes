@@ -1,6 +1,9 @@
 import { Helmet } from "react-helmet";
 import Banner from "./Banner";
 import Feature from "./Feature";
+import HomeState from "./HomeState";
+import TopDeliveryMan from "./TopDeliveryMan";
+import OurService from "./OurService";
 
 const Home = () => {
 
@@ -9,6 +12,9 @@ const Home = () => {
             <Helmet><title>Home</title></Helmet>
             <Banner/>
             <Feature/>
+            <HomeState/>
+            <TopDeliveryMan/>
+            <OurService/>
         </div>
     );
 };

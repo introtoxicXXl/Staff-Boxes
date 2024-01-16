@@ -8,7 +8,8 @@ export default {
     extend: {
       fontFamily:{
         knewave:['"Knewave", system-ui'],
-        raleway:['"Raleway", sans-serif']
+        raleway:['"Raleway", sans-serif'],
+        oxanium:['"Oxanium", sans-serif']
       }
     },
   },

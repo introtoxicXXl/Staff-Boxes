@@ -4,7 +4,7 @@ const Navbar = () => {
 
 
     return (
-        <nav className="bg-[#fff] fixed w-full z-20 top-0 start-0 shadow border-gray-200 dark:border-gray-600">
+        <nav className="bg-[#fff] fixed w-full z-50 top-0 start-0 shadow border-gray-200 dark:border-gray-600">
             <div className=" flex flex-wrap items-center justify-between mx-auto p-4 container">
                 <Link to='/' className="" >
                     <img className='w-14 ml-4' src={logo} alt="" />
