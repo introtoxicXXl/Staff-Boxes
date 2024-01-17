@@ -9,7 +9,8 @@ export default {
       fontFamily:{
         knewave:['"Knewave", system-ui'],
         raleway:['"Raleway", sans-serif'],
-        oxanium:['"Oxanium", sans-serif']
+        oxanium:['"Oxanium", sans-serif'],
+        signature:['"Dancing Script", cursive']
       }
     },
   },

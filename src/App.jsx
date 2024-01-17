@@ -9,10 +9,9 @@ function App() {
   const [loading, setLoading] = useState(true);
   useEffect(() => {
     const fetchData = async () => {
-      await new Promise((resolve) => setTimeout(resolve, 4500));
+      await new Promise((resolve) => setTimeout(resolve, 100));
       setLoading(false);
     };
-
     fetchData();
   }, []);
 
