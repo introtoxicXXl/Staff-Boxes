@@ -5,6 +5,7 @@ import HomeState from "./HomeState";
 import TopDeliveryMan from "./TopDeliveryMan";
 import OurService from "./OurService";
 import FeatureVideo from "./FeatureVideo";
+import Review from "./Review";
 
 const Home = () => {
 
@@ -17,6 +18,7 @@ const Home = () => {
             <TopDeliveryMan/>
             <OurService/>
             <FeatureVideo/>
+            <Review/>
         </div>
     );
 };

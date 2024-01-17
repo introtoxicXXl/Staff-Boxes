@@ -2,7 +2,7 @@ import video from '../../assets/video.mp4';
 const FeatureVideo = () => {
 
     return (
-        <div className="container mx-auto my-20">
+        <div className="container mx-auto md:py-20 py-6">
             <div className='hero md:w-10/12 mx-auto md:px-0 px-2'>
                 <video autoPlay loop playsInline className='md:rounded-3xl rounded-lg'>
                     <source src={video} />
