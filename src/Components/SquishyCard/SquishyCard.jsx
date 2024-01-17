@@ -13,7 +13,7 @@ const SquishyCard = ({ service }) => {
 };
 
 const Card = ({ service }) => {
-    const { title, subTitle, description, points, bgColor } = service;
+    const { title, subTitle, description, points, bgColor, price } = service;
 
     return (
         <motion.div
@@ -44,22 +44,25 @@ const Card = ({ service }) => {
                         duration: 1,
                         ease: "backInOut",
                     }}
-                    className="my-2 block origin-top-left font-mono lg:text-6xl md:text-6xl text-5xl font-black leading-[1.2]"
+                    className="my-2 block origin-top-left font-mono md:text-6xl text-5xl font-black leading-[1.2]"
                 >
                     {title}
                 </motion.span>
-                <p>
+                <p className="text-3xl my-2 font-bold font-oxanium">
+                    {price} <span className="uppercase text-sm">/Taka</span>
+                </p>
+                <p className="text-md">
                     {description}
                 </p>
                 <ul className="mt-3">
                     {
-                        points.map((point,indx)=><li className="ml-14 font-bold font-raleway flex items-center" key={indx}> <IoMdCheckmarkCircleOutline className="mr-2"/>{point}</li>)
+                        points.map((point, indx) => <li className="md:ml-14 ml-6 font-bold font-raleway flex text-sm items-stretch" key={indx}> <IoMdCheckmarkCircleOutline className="mr-2 text-md" />{point}</li>)
                     }
                 </ul>
             </div>
             <div className="mt-10">
                 <button className="absolute bottom-4 left-4 right-4 z-20 rounded border-2 border-white bg-white py-2 text-center font-mono font-black uppercase text-neutral-800 backdrop-blur transition-colors hover:bg-white/30 hover:text-white">
-                    Get it now
+                    Sign Up Now
                 </button>
             </div>
             <Background />
@@ -71,8 +74,8 @@ const Background = () => {
     return (
         <motion.svg
             width="320"
-            height="384"
-            viewBox="0 0 320 384"
+            height="600"
+            viewBox="-50 -60 320 384"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
             className="absolute inset-0 z-0"

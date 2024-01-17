@@ -27,7 +27,7 @@ const Navbar = () => {
                             <NavLink to='/' className="block py-2 text-center px-3 text-black rounded">Home</NavLink>
                         </li>
                         <li>
-                            <NavLink to='/price' className="block text-center py-2 px-3 text-black rounded">Pricing</NavLink>
+                            <NavLink to='/pricing' className="block text-center py-2 px-3 text-black rounded">Pricing</NavLink>
                         </li>
                         <li>
                             <NavLink to='/about' className="block text-center py-2 px-3 text-black rounded">About</NavLink>
