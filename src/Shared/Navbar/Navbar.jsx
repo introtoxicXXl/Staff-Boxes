@@ -42,7 +42,7 @@ const Navbar = () => {
                         </li>
                         {
                             user ? <li>
-                                <Link to='/Dashboard' className='block text-center py-2 px-3 text-black rounded'>Dashboard</Link>
+                                <Link to='/Dashboard/myProfile' className='block text-center py-2 px-3 text-black rounded'>Dashboard</Link>
                             </li> : <li>
                                 <NavLink to='/pricing' className='block text-center py-2 px-3 text-black rounded'>Pricing</NavLink>
                             </li>

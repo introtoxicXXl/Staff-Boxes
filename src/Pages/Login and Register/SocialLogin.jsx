@@ -35,6 +35,9 @@ const SocialLogin = () => {
           navigate(form, { replace: true })
           setLoading(false)
         }
+      }).catch((err)=>{
+        console.log(err)
+        setLoading(false)
       })
   }
   return (

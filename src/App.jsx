@@ -20,7 +20,7 @@ function App() {
       {
         loading ? <Loader /> : <>
           <Navbar />
-          <Outlet />
+            <Outlet />
           <Footer />
         </>
       }
