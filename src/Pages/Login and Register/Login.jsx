@@ -108,8 +108,9 @@ const Login = () => {
                                 {loading && <span className="loading loading-spinner"></span>}
                             </button>
                         </form>
-                        <p className="text-center mt-3">New here? <Link to='/register' className="hover:underline hover:text-accent">Register</Link></p>
+                        <div className="divider">OR</div>
                         <SocialLogin />
+                        <p className="text-center mt-3">New here? <Link to='/register' className="hover:underline hover:text-accent">Register</Link></p>
                     </div>
                 </div>
             </div>

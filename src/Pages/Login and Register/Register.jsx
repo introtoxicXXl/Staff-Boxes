@@ -57,7 +57,7 @@ const Register = () => {
     }
 
     useEffect(() => {
-        loadCaptchaEnginge(6,'transparent');
+        loadCaptchaEnginge(6, 'transparent');
     }, [])
 
     return (
@@ -202,9 +202,9 @@ const Register = () => {
                                 {loading && <span className="loading loading-spinner"></span>}
                             </button>
                         </form>
-
-                        <p className="text-center mt-3">Do you have account? <Link to='/login' className="hover:underline hover:text-accent">Login Here</Link></p>
+                        <div className="divider">OR</div>
                         <SocialLogin />
+                        <p className="text-center mt-3">Do you have account? <Link to='/login' className="hover:underline hover:text-accent">Login Here</Link></p>
                     </div>
                 </div>
             </div>
