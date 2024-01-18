@@ -16,7 +16,7 @@ function App() {
   }, []);
 
   return (
-    <div className=''>
+    <div className='relative'>
       {
         loading ? <Loader /> : <>
           <Navbar />

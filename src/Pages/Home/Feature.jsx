@@ -36,7 +36,7 @@ const Card = ({ title, Icon }) => {
 };
 Card.propTypes = {
     title: PropTypes.string,
-    Icon: PropTypes.img
+    Icon: PropTypes.element
 }
 
 export default Feature;

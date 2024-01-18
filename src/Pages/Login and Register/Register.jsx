@@ -57,7 +57,7 @@ const Register = () => {
     }
 
     useEffect(() => {
-        loadCaptchaEnginge(6, 'transparent');
+        loadCaptchaEnginge(6, 'transparent','black','numbers');
     }, [])
 
     return (
