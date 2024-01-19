@@ -28,6 +28,7 @@ const AuthProvider = ({ children }) => {
     return createUserWithEmailAndPassword(auth, email, password);
   }
   const updateUser = (user, img) => {
+    setLoading(true)
     const displayName = `${user.firstName} ${user.lastName}`;
     const number = user.phoneNumber;
     updateProfile(auth.currentUser, {

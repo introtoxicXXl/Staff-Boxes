@@ -12,6 +12,7 @@ import MyProfile from "../Pages/Dashboard/MyProfile/MyProfile";
 import BookParcel from "../Pages/Dashboard/BookParcel/BookParcel";
 import MyParcelUpdate from "../Pages/Dashboard/MyParcel/MyParcelUpdate";
 import DeliveryManProfile from "../Pages/Dashboard/DeliveryManDashboard/DeliveryManProfile/DeliveryManProfile";
+import AllUser from "../Pages/Dashboard/AdminDashboard/AllUser";
  const Router = createBrowserRouter([
     {
       path: "/",
@@ -65,7 +66,13 @@ import DeliveryManProfile from "../Pages/Dashboard/DeliveryManDashboard/Delivery
         {
           path:'/dashboard/profile',
           element:<DeliveryManProfile/>
-        }
+        },
+
+        // admin dashboard 
+        {
+          path:'/dashboard/allUser',
+          element:<AllUser/>
+        },
       ]
     }
   ]);

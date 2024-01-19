@@ -9,7 +9,6 @@ import { motion } from "framer-motion";
 const Dashboard = () => {
     const [open, setOpen] = useState(false);
 
-
     const dashboardNav = <>
         <li className="">
             <Link to='/' className="" >
@@ -24,6 +23,9 @@ const Dashboard = () => {
         </li>
         <li className="">
             <NavLink to='/dashboard/myParcel' className='flex items-center text-sm lg:text-base'><TfiMenuAlt className="mr-2" />My Parcel</NavLink>
+        </li>
+        <li className="">
+            <NavLink to='/dashboard/allUser' className='flex items-center text-sm lg:text-base'><TfiMenuAlt className="mr-2" />All Users</NavLink>
         </li>
     </>
 

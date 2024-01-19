@@ -58,7 +58,7 @@ const MyParcel = () => {
       <div>
         <div className="overflow-x-auto">
           <table className="table table-md overflow-x-scroll">
-            <thead>
+            <thead className="bg-[#16A7FC] text-[#fff]">
               <tr>
                 <th>#</th>
                 <th>Parcel Type</th>
