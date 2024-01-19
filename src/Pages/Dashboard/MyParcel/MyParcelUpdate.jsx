@@ -63,7 +63,7 @@ const MyParcelUpdate = () => {
                         <div className="relative z-0 w-full mb-5 group">
                             <input
                                 defaultValue={firstName}
-                                {...register('firstName')}
+                                {...register('firstName',{required:true})}
                                 type="text"
                                 id="floating_first_name"
                                 className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
@@ -77,7 +77,7 @@ const MyParcelUpdate = () => {
                         <div className="relative z-0 w-full mb-5 group">
                             <input
                                 defaultValue={lastName}
-                                {...register('lastName')}
+                                {...register('lastName',{required:true})}
                                 type="text"
                                 id="floating_last_name"
                                 className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
@@ -94,7 +94,7 @@ const MyParcelUpdate = () => {
                         <div className="relative z-0 w-full mb-5 group">
                             <input
                                 defaultValue={email}
-                                {...register('email')}
+                                {...register('email',{required:true})}
                                 type="email"
                                 id="floating_email"
                                 className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
@@ -108,7 +108,7 @@ const MyParcelUpdate = () => {
                         <div className="relative z-0 w-full mb-5 group">
                             <input
                                 defaultValue={phoneNumber}
-                                {...register('phoneNumber')}
+                                {...register('phoneNumber',{required:true})}
                                 type="tel"
                                 id="floating_phone"
                                 className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
@@ -125,7 +125,7 @@ const MyParcelUpdate = () => {
                         <div className="relative z-0 w-full mb-5 group">
                             <input
                                 defaultValue={parcelType}
-                                {...register('parcelType')}
+                                {...register('parcelType',{required:true})}
                                 type="text"
                                 id="floating_parcelType"
                                 className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
@@ -139,7 +139,7 @@ const MyParcelUpdate = () => {
                         <div className="relative z-0 w-full mb-5 group">
                             <input
                                 defaultValue={parcelWeight}
-                                {...register('parcelWeight')}
+                                {...register('parcelWeight',{required:true})}
                                 step="0.0000001"
                                 type="number"
                                 id="floating_parcelWeight"
@@ -157,7 +157,7 @@ const MyParcelUpdate = () => {
                         <div className="relative z-0 w-full mb-5 group">
                             <input
                                 defaultValue={receiverName}
-                                {...register('receiverName')}
+                                {...register('receiverName',{required:true})}
                                 type="text"
                                 id="floating_receiverName"
                                 className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
@@ -171,7 +171,7 @@ const MyParcelUpdate = () => {
                         <div className="relative z-0 w-full mb-5 group">
                             <input
                                 defaultValue={receiverPhone}
-                                {...register('receiverPhone')}
+                                {...register('receiverPhone',{required:true})}
                                 type="tel"
                                 id="floating_receiverPhone"
                                 className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
@@ -188,7 +188,7 @@ const MyParcelUpdate = () => {
                         <div className="relative z-0 w-full mb-5 group">
                             <input
                                 defaultValue={deliveryAddress}
-                                {...register('deliveryAddress')}
+                                {...register('deliveryAddress',{required:true})}
                                 type="address"
                                 id="floating_receiverPhone"
                                 className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
@@ -218,7 +218,7 @@ const MyParcelUpdate = () => {
                         <div className="relative z-0 w-full mb-5 group">
                             <input
                                 defaultValue={deliveryAddressLatitude}
-                                {...register('deliveryAddressLatitude')}
+                                {...register('deliveryAddressLatitude',{required:true})}
                                 type="number"
                                 step="0.000000001"
                                 id="floating_deliveryAddressLatitude"
@@ -233,7 +233,7 @@ const MyParcelUpdate = () => {
                         <div className="relative z-0 w-full mb-5 group">
                             <input
                                 defaultValue={deliveryAddressLongitude}
-                                {...register('deliveryAddressLongitude')}
+                                {...register('deliveryAddressLongitude',{required:true})}
                                 step="0.00000001"
                                 type="number"
                                 id="floating_deliveryAddressLongitude"
