@@ -41,14 +41,14 @@ const MyParcel = () => {
     switch (status) {
       case 'Pending':
         return 'black';
-      case 'On the way':
+      case 'On The Way':
         return 'blue';
       case 'Delivered':
         return 'green';
       case 'Cancel':
         return 'red';
       default:
-        return 'black'; // Set a default color if needed
+        return 'black';
     }
   };
 
