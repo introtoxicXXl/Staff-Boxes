@@ -4,7 +4,7 @@ import { PropTypes } from 'prop-types';
 
 
 const Modal = ({ isOpen, setIsOpen, data }) => {
-    const { firstName, lastName, email, phoneNumber, parcelType, receiverName, receiverPhone, deliveryAddress, requestDate, deliveryAddressLatitude, deliveryAddressLongitude, weight, price, trackingID, status
+    const { firstName, lastName, email, phoneNumber, parcelType, receiverName, receiverPhone, deliveryAddress, requestDate, deliveryAddressLatitude, deliveryAddressLongitude, parcelWeight, price, trackingID, status
     } = data;
     return (
         <AnimatePresence>
@@ -63,7 +63,7 @@ const Modal = ({ isOpen, setIsOpen, data }) => {
                                                 </tr>
                                                 <tr>
                                                     <td>Weight</td>
-                                                    <td className="text-right">{weight} Kg</td>
+                                                    <td className="text-right">{parcelWeight} Kg</td>
                                                 </tr>
                                                 <tr>
                                                     <td>Price</td>

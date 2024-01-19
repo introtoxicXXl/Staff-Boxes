@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from './../../../Hooks/useAxiosSecure';
 import Modal from "../../../Components/Modal/Modal";
+import moment from "moment";
 
 const BookParcel = () => {
   const [loading, setLoading] = useState(false);
@@ -54,11 +55,17 @@ const BookParcel = () => {
     const price = calculatePrice(weight);
     const trackingID = generateTrackingID()
     const status = "Pending";
+    const bookingDate = moment().format('L');
+    const requestedDate = moment(parcel.requestDate);
+    const approximateDate = requestedDate.clone().add(3, 'days').format('L');
+
     const bookingsInfo = {
       ...parcel,
       price,
       trackingID,
-      status
+      status,
+      bookingDate,
+      approximateDate
     }
     setFormData(bookingsInfo);
 

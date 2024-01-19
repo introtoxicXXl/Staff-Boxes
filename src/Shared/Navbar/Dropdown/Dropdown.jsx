@@ -63,7 +63,7 @@ const Dropdown = () => {
                         <Link to='/about'><Option setOpen={setOpen} Icon={FcAbout} text="About Us" /></Link>
                         
                         {
-                            user ? <Link to='/dashboard'><Option setOpen={setOpen} Icon={MdOutlineDashboardCustomize } text="Dashboard" /></Link> : <Link to='/pricing'><Option setOpen={setOpen} Icon={ImPriceTags } text="Pricing" /></Link> 
+                            user ? <Link to='/dashboard/myProfile'><Option setOpen={setOpen} Icon={MdOutlineDashboardCustomize } text="Dashboard" /></Link> : <Link to='/pricing'><Option setOpen={setOpen} Icon={ImPriceTags } text="Pricing" /></Link> 
                         }
                         {
                             !user && <Link to='/login'><Option setOpen={setOpen} Icon={VscSignIn} text="Login" /></Link>

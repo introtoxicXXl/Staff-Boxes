@@ -10,6 +10,7 @@ import Dashboard from "../Pages/Dashboard/Dashboard/Dashboard";
 import MyParcel from "../Pages/Dashboard/MyParcel/MyParcel";
 import MyProfile from "../Pages/Dashboard/MyProfile/MyProfile";
 import BookParcel from "../Pages/Dashboard/BookParcel/BookParcel";
+import MyParcelUpdate from "../Pages/Dashboard/MyParcel/MyParcelUpdate";
  const Router = createBrowserRouter([
     {
       path: "/",
@@ -52,6 +53,10 @@ import BookParcel from "../Pages/Dashboard/BookParcel/BookParcel";
         {
           path:'/dashboard/bookParcel',
           element:<BookParcel/>
+        },
+        {
+          path:'/dashboard/myParcel/:id',
+          element:<MyParcelUpdate/>
         },
       ]
     }
