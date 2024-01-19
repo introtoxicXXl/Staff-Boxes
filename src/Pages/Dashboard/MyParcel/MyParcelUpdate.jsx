@@ -55,7 +55,7 @@ const MyParcelUpdate = () => {
     }
     return (
         <div className="lg:w-11/12 mx-auto my-10 relative">
-            <h1 className="text-center text-2xl font-bold font-raleway">Hello, Book your valuable parcel</h1>
+            <h1 className="text-center text-2xl font-bold font-raleway">Hello, Update your valuable parcel</h1>
             <div>
                 <form className="w-full mt-10" onSubmit={handleSubmit(onSubmit)}>
                     {/* first name and last name  */}

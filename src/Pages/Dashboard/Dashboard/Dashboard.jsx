@@ -27,6 +27,9 @@ const Dashboard = () => {
         <li className="">
             <NavLink to='/dashboard/allUser' className='flex items-center text-sm lg:text-base'><TfiMenuAlt className="mr-2" />All Users</NavLink>
         </li>
+        <li className="">
+            <NavLink to='/dashboard/allParcel' className='flex items-center text-sm lg:text-base'><TfiMenuAlt className="mr-2" />All Parcel</NavLink>
+        </li>
     </>
 
     return (

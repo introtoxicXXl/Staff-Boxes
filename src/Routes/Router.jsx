@@ -13,6 +13,7 @@ import BookParcel from "../Pages/Dashboard/BookParcel/BookParcel";
 import MyParcelUpdate from "../Pages/Dashboard/MyParcel/MyParcelUpdate";
 import DeliveryManProfile from "../Pages/Dashboard/DeliveryManDashboard/DeliveryManProfile/DeliveryManProfile";
 import AllUser from "../Pages/Dashboard/AdminDashboard/AllUser";
+import AllParcel from "../Pages/Dashboard/AdminDashboard/AllParcel";
  const Router = createBrowserRouter([
     {
       path: "/",
@@ -72,6 +73,10 @@ import AllUser from "../Pages/Dashboard/AdminDashboard/AllUser";
         {
           path:'/dashboard/allUser',
           element:<AllUser/>
+        },
+        {
+          path:'/dashboard/allParcel',
+          element:<AllParcel/>
         },
       ]
     }
