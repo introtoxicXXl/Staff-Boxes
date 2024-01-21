@@ -15,7 +15,6 @@ const CustomModal = ({ isOpen, onClose, parcel, refetch }) => {
     }
   })
   const onSubmit = (data) => {
-
     axiosSecure.patch(`/admin/updateParcel/${parcel._id}`, {...data})
     refetch();
     onClose()

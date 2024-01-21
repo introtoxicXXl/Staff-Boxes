@@ -14,8 +14,8 @@ const AllParcel = () => {
       return res.data
     }
   })
-  const openModal = (iu) => {
-    setModalData(iu)
+  const openModal = (item) => {
+    setModalData(item)
     setIsModalOpen(true);
   };
   const closeModal = () => {
@@ -65,7 +65,8 @@ const AllParcel = () => {
                     <td>{parcel?.requestDate}</td>
                     <th>{parcel?.price}</th>
                     <td style={{ color: getStatusColor(parcel.status) }}>{parcel?.status}</td>
-                    <td><button className="btn btn-xs btn-outline btn-neutral" onClick={() => openModal(parcel)}>Mange Parcel</button></td>
+                    <td><button className="btn btn-xs btn-outline btn-neutral" onClick={() => openModal(parcel)}>Mange Parcel
+                    </button></td>
                   </tr>
                 ))
               }

@@ -14,6 +14,8 @@ import MyParcelUpdate from "../Pages/Dashboard/MyParcel/MyParcelUpdate";
 import DeliveryManProfile from "../Pages/Dashboard/DeliveryManDashboard/DeliveryManProfile/DeliveryManProfile";
 import AllUser from "../Pages/Dashboard/AdminDashboard/AllUser";
 import AllParcel from "../Pages/Dashboard/AdminDashboard/AllParcel";
+import AllDeliveryMan from "../Pages/Dashboard/AdminDashboard/AllDeliveryMan";
+import AdminProfile from "../Pages/Dashboard/AdminDashboard/AdminProfile";
  const Router = createBrowserRouter([
     {
       path: "/",
@@ -78,6 +80,21 @@ import AllParcel from "../Pages/Dashboard/AdminDashboard/AllParcel";
           path:'/dashboard/allParcel',
           element:<AllParcel/>
         },
+        {
+          path:'/dashboard/allDeliveryMan',
+          element:<AllDeliveryMan/>
+        },
+        {
+          path:'/dashboard/adminProfile',
+          element:<AdminProfile/>
+        },
+
+
+        // delivery Man dashboard 
+        {
+          path:'/dashboard/myDeliveryList',
+          element:
+        }
       ]
     }
   ]);

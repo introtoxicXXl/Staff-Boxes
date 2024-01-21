@@ -25,10 +25,16 @@ const Dashboard = () => {
             <NavLink to='/dashboard/myParcel' className='flex items-center text-sm lg:text-base'><TfiMenuAlt className="mr-2" />My Parcel</NavLink>
         </li>
         <li className="">
+            <NavLink to='/dashboard/adminProfile' className='flex items-center text-sm lg:text-base'><TfiMenuAlt className="mr-2" />My Profile</NavLink>
+        </li>
+        <li className="">
             <NavLink to='/dashboard/allUser' className='flex items-center text-sm lg:text-base'><TfiMenuAlt className="mr-2" />All Users</NavLink>
         </li>
         <li className="">
             <NavLink to='/dashboard/allParcel' className='flex items-center text-sm lg:text-base'><TfiMenuAlt className="mr-2" />All Parcel</NavLink>
+        </li>
+        <li className="">
+            <NavLink to='/dashboard/allDeliveryMan' className='flex items-center text-sm lg:text-base'><TfiMenuAlt className="mr-2" />All Delivery Man</NavLink>
         </li>
     </>
 
