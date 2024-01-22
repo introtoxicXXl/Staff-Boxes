@@ -5,38 +5,67 @@ import { TfiMenuAlt } from "react-icons/tfi";
 import { Helmet } from "react-helmet";
 import { useState } from "react";
 import { motion } from "framer-motion";
+import useAxiosSecure from "../../../Hooks/useAxiosSecure";
+import { useQuery } from "@tanstack/react-query";
+import useAuth from "../../../Hooks/useAuth";
 
 const Dashboard = () => {
     const [open, setOpen] = useState(false);
+    const { user } = useAuth();
+    const axiosSecure = useAxiosSecure();
+    const { data: role = {} } = useQuery({
+        queryKey: ['role'],
+        queryFn: async () => {
+            const res = await axiosSecure(`/users/${user.email}`)
+            return res.data
+        }
+    })
 
-    const dashboardNav = <>
-        <li className="">
-            <Link to='/' className="" >
-                <p className='text-white lg:text-lg md:text-md text-md font-knewave'><span className='text-[#0e212c]'>Stuff</span> Boxes</p>
-            </Link>
-        </li>
-        <li className="">
-            <NavLink to='/dashboard/myProfile' className='flex items-center lg:text-base text-sm'> <FaHome className="mr-1" /> My Profile</NavLink>
-        </li>
-        <li className="">
-            <NavLink to='/dashboard/bookParcel' className='flex items-center text-sm lg:text-base'><ImSpoonKnife className="mr-2" />Book Parcel</NavLink>
-        </li>
-        <li className="">
-            <NavLink to='/dashboard/myParcel' className='flex items-center text-sm lg:text-base'><TfiMenuAlt className="mr-2" />My Parcel</NavLink>
-        </li>
-        <li className="">
-            <NavLink to='/dashboard/adminProfile' className='flex items-center text-sm lg:text-base'><TfiMenuAlt className="mr-2" />My Profile</NavLink>
-        </li>
-        <li className="">
-            <NavLink to='/dashboard/allUser' className='flex items-center text-sm lg:text-base'><TfiMenuAlt className="mr-2" />All Users</NavLink>
-        </li>
-        <li className="">
-            <NavLink to='/dashboard/allParcel' className='flex items-center text-sm lg:text-base'><TfiMenuAlt className="mr-2" />All Parcel</NavLink>
-        </li>
-        <li className="">
-            <NavLink to='/dashboard/allDeliveryMan' className='flex items-center text-sm lg:text-base'><TfiMenuAlt className="mr-2" />All Delivery Man</NavLink>
-        </li>
-    </>
+
+    const dashboardNav = (
+        <>
+            {
+                role.role === 'Customer' && (
+                    <>
+                        <li className="">
+                            <NavLink to='/dashboard/myProfile' className='flex items-center lg:text-base text-sm'> <FaHome className="mr-1" /> My Profile</NavLink>
+                        </li>
+                        <li className="">
+                            <NavLink to='/dashboard/bookParcel' className='flex items-center text-sm lg:text-base'><ImSpoonKnife className="mr-2" />Book Parcel</NavLink>
+                        </li>
+                        <li className="">
+                            <NavLink to='/dashboard/myParcel' className='flex items-center text-sm lg:text-base'><TfiMenuAlt className="mr-2" />My Parcel</NavLink>
+                        </li></>
+                )
+            }
+
+            {role.role === 'Delivery Man' && (
+                <><li className="">
+                    <NavLink to='/dashboard/myDeliveryList' className='flex items-center text-sm lg:text-base'><TfiMenuAlt className="mr-2" />My Delivery List</NavLink>
+                </li>
+                <li className="">
+                    <NavLink to='/dashboard/review' className='flex items-center text-sm lg:text-base'><TfiMenuAlt className="mr-2" />Review</NavLink>
+                </li></>
+            )}
+
+            {role.role === 'Admin' && (
+                <>
+                    <li className="">
+                        <NavLink to='/dashboard/adminProfile' className='flex items-center text-sm lg:text-base'><TfiMenuAlt className="mr-2" />My Profile</NavLink>
+                    </li>
+                    <li className="">
+                        <NavLink to='/dashboard/allUser' className='flex items-center text-sm lg:text-base'><TfiMenuAlt className="mr-2" />All Users</NavLink>
+                    </li>
+                    <li className="">
+                        <NavLink to='/dashboard/allParcel' className='flex items-center text-sm lg:text-base'><TfiMenuAlt className="mr-2" />All Parcel</NavLink>
+                    </li>
+                    <li className="">
+                        <NavLink to='/dashboard/allDeliveryMan' className='flex items-center text-sm lg:text-base'><TfiMenuAlt className="mr-2" />All Delivery Man</NavLink>
+                    </li>
+                </>
+            )}
+        </>
+    );
 
     return (
         <div className="px-4 py-5 lg:px-0 lg:py-0">
@@ -45,8 +74,8 @@ const Dashboard = () => {
                 <div className="drawer lg:hidden block drawer-end">
                     <input id="my-drawer" type="checkbox" className="drawer-toggle" />
                     <div className="drawer-content">
-                        <motion.label variants={iconVariants} htmlFor="my-drawer" onClick={()=>setOpen(true)} className="btn btn-outline btn-accent drawer-button"> 
-                        {open ?
+                        <motion.label variants={iconVariants} htmlFor="my-drawer" onClick={() => setOpen(true)} className="btn btn-outline btn-accent drawer-button">
+                            {open ?
                                 <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" /></svg>
                                 :
                                 <svg className="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
@@ -55,8 +84,13 @@ const Dashboard = () => {
                         </motion.label>
                     </div>
                     <div className="drawer-side z-30">
-                        <label htmlFor="my-drawer" onClick={()=>setOpen(false)} aria-label="close sidebar" className="drawer-overlay"></label>
+                        <label htmlFor="my-drawer" onClick={() => setOpen(false)} aria-label="close sidebar" className="drawer-overlay"></label>
                         <ul className="menu p-4 md:w-1/2 w-2/3 min-h-full bg-[#16A7FC] text-base-content">
+                            <li className="">
+                                <Link to='/' className="" >
+                                    <p className='text-white lg:text-lg md:text-md text-md font-knewave'><span className='text-[#0e212c]'>Stuff</span> Boxes</p>
+                                </Link>
+                            </li>
                             {dashboardNav}
                         </ul>
                     </div>
@@ -66,6 +100,11 @@ const Dashboard = () => {
                 <div className="lg:w-2/12 bg-[#16A7FC] min-h-screen lg:block hidden">
                     <div className="flex justify-center">
                         <ul className="menu fixed space-y-3">
+                        <li className="">
+                        <Link to='/' className="" >
+                            <p className='text-white lg:text-lg md:text-md text-md font-knewave'><span className='text-[#0e212c]'>Stuff</span> Boxes</p>
+                        </Link>
+                    </li>
                             {dashboardNav}
                         </ul>
                     </div>

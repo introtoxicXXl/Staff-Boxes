@@ -8,10 +8,45 @@ import { useState } from "react";
 import PropTypes from 'prop-types';
 import { Link } from "react-router-dom";
 import useAuth from '../../../Hooks/useAuth';
+import useAxiosSecure from "../../../Hooks/useAxiosSecure";
+import { useQuery } from "@tanstack/react-query";
 
 const Dropdown = () => {
     const [open, setOpen] = useState(false);
     const { user, logout } = useAuth();
+    const axiosSecure = useAxiosSecure();
+    const { data: role = {} } = useQuery({
+        queryKey: ['role'],
+        queryFn: async () => {
+            const res = await axiosSecure(`/users/${user.email}`)
+            return res.data
+        }
+    })
+    const nav = (
+        <>
+            {
+                role.role === 'Customer' && (
+                    <>
+                        <Link to='/dashboard/myProfile'><Option setOpen={setOpen} Icon={MdOutlineDashboardCustomize} text="Dashboard" /></Link>
+                    </>
+                )
+            }
+            {
+                role.role === 'Delivery Man' && (
+                    <>
+                        <Link to='/dashboard/myDeliveryList'><Option setOpen={setOpen} Icon={MdOutlineDashboardCustomize} text="Dashboard" /></Link>
+                    </>
+                )
+            }
+            {
+                role.role === 'Admin' && (
+                    <>
+                        <Link to='/dashboard/adminProfile'><Option setOpen={setOpen} Icon={MdOutlineDashboardCustomize} text="Dashboard" /></Link>
+                    </>
+                )
+            }
+        </>
+    )
 
     const handleSignOut = () => {
         logout()
@@ -57,13 +92,13 @@ const Dropdown = () => {
                                     </motion.div>
                                 </div>
                                 <span>{user?.displayName}</span>
-                            </motion.li>    
+                            </motion.li>
                         }
                         <Link to='/'><Option setOpen={setOpen} Icon={FiHome} text="Home" /></Link>
                         <Link to='/about'><Option setOpen={setOpen} Icon={FcAbout} text="About Us" /></Link>
-                        
+
                         {
-                            user ? <Link to='/dashboard/myProfile'><Option setOpen={setOpen} Icon={MdOutlineDashboardCustomize } text="Dashboard" /></Link> : <Link to='/pricing'><Option setOpen={setOpen} Icon={ImPriceTags } text="Pricing" /></Link> 
+                            user ? nav : <Link to='/pricing'><Option setOpen={setOpen} Icon={ImPriceTags} text="Pricing" /></Link>
                         }
                         {
                             !user && <Link to='/login'><Option setOpen={setOpen} Icon={VscSignIn} text="Login" /></Link>

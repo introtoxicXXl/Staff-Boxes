@@ -15,6 +15,7 @@ const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const axiosPublic = useAxiosPublic();
 
+
   const google = () => {
     setLoading(true);
     return signInWithPopup(auth, googleProvider);

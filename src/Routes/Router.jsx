@@ -11,11 +11,13 @@ import MyParcel from "../Pages/Dashboard/MyParcel/MyParcel";
 import MyProfile from "../Pages/Dashboard/MyProfile/MyProfile";
 import BookParcel from "../Pages/Dashboard/BookParcel/BookParcel";
 import MyParcelUpdate from "../Pages/Dashboard/MyParcel/MyParcelUpdate";
-import DeliveryManProfile from "../Pages/Dashboard/DeliveryManDashboard/DeliveryManProfile/DeliveryManProfile";
 import AllUser from "../Pages/Dashboard/AdminDashboard/AllUser";
 import AllParcel from "../Pages/Dashboard/AdminDashboard/AllParcel";
 import AllDeliveryMan from "../Pages/Dashboard/AdminDashboard/AllDeliveryMan";
 import AdminProfile from "../Pages/Dashboard/AdminDashboard/AdminProfile";
+import MyDeliveryList from "../Pages/Dashboard/DeliveryMan/MyDeliveryList";
+import AdminRoute from './AdminRoute';
+import Review from "../Pages/Dashboard/DeliveryMan/Review";
  const Router = createBrowserRouter([
     {
       path: "/",
@@ -65,35 +67,35 @@ import AdminProfile from "../Pages/Dashboard/AdminDashboard/AdminProfile";
         },
 
 
-        // delivery man dashboard 
-        {
-          path:'/dashboard/profile',
-          element:<DeliveryManProfile/>
-        },
+        
 
         // admin dashboard 
         {
           path:'/dashboard/allUser',
-          element:<AllUser/>
+          element:<AdminRoute><AllUser/></AdminRoute>
         },
         {
           path:'/dashboard/allParcel',
-          element:<AllParcel/>
+          element:<AdminRoute><AllParcel/></AdminRoute>
         },
         {
           path:'/dashboard/allDeliveryMan',
-          element:<AllDeliveryMan/>
+          element:<AdminRoute><AllDeliveryMan/></AdminRoute>
         },
         {
           path:'/dashboard/adminProfile',
-          element:<AdminProfile/>
+          element:<AdminRoute><AdminProfile/></AdminRoute>
         },
 
 
         // delivery Man dashboard 
         {
           path:'/dashboard/myDeliveryList',
-          element:
+          element:<MyDeliveryList/>
+        },
+        {
+          path:'/dashboard/review',
+          element:<Review/>
         }
       ]
     }

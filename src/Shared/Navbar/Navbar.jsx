@@ -3,12 +3,16 @@ import logo from '../../assets/logo.jpg';
 import Dropdown from './Dropdown/Dropdown';
 import useAuth from '../../Hooks/useAuth';
 import NavProfile from './NavProfile';
+import useNavLink from '../../Hooks/useNavLink';
 
 const Navbar = () => {
-    const { user } = useAuth();
     const location = useLocation();
     const from = location.pathname
-    console.log(from)
+    const nav = useNavLink();
+    const { user } = useAuth();
+    
+
+
     const button = from === '/login' ? <Link to='/register'>
         <button type="button" className="btn md:btn-md md:block hidden btn-outline hover:text-white btn-accent">Register</button>
     </Link> : <Link to='/login'>
@@ -41,11 +45,10 @@ const Navbar = () => {
                             <NavLink to='/about' className="block text-center py-2 px-3 text-black rounded">About</NavLink>
                         </li>
                         {
-                            user ? <li>
-                                <Link to='/Dashboard/myProfile' className='block text-center py-2 px-3 text-black rounded'>Dashboard</Link>
-                            </li> : <li>
+                            !user ? <li>
                                 <NavLink to='/pricing' className='block text-center py-2 px-3 text-black rounded'>Pricing</NavLink>
-                            </li>
+                            </li> : nav
+
                         }
                     </ul>
                 </div>

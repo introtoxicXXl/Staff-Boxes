@@ -19,7 +19,7 @@ const CustomModal = ({ isOpen, onClose, parcel, refetch }) => {
     refetch();
     onClose()
   }
-
+console.log(items)
   return (
     <dialog open={isOpen} className="modal">
       <div className="modal-box lg:w-1/3 max-w-5xl">
@@ -33,7 +33,7 @@ const CustomModal = ({ isOpen, onClose, parcel, refetch }) => {
             >
               <option disabled>Select Delivery Man</option>
               {
-                items.map(item => <option key={item._id} value={item._id}>{item.name}</option>)
+                items.map(item => <option key={item._id} value={item._id}>{`${item.firstName} ${item.lastName}`}</option>)
               }
             </select>
             <select

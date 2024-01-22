@@ -11,8 +11,6 @@ const AllDeliveryMan = () => {
             return res.data;
         }
     })
-
-    console.log(deliveryMan)
     return (
         <div className="lg:w-11/12 mx-auto my-10">
             <h1 className="text-3xl font-bold font-raleway text-center mb-5">This is All Delivery Man</h1>
