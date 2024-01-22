@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@smastrom/react-rating": "^1.4.0",
     "@stripe/react-stripe-js": "^2.4.0",
     "@stripe/stripe-js": "^2.3.0",
     "@sweetalert2/theme-borderless": "^5.0.16",

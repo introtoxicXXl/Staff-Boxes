@@ -3,9 +3,13 @@ import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import useAuth from "../../../Hooks/useAuth";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import { useState } from "react";
+import ReviewModal from "../../../Components/ReviewModal/ReviewModal";
 
 const MyParcel = () => {
   const { user } = useAuth();
+  const [openModal, setOpenModal] = useState(false);
+  const [selectedParcel, setSelectedParcel] = useState(null);
   const axiosSecure = useAxiosSecure();
   const navigate = useNavigate();
   const { data: parcels = [], refetch } = useQuery({
@@ -51,7 +55,10 @@ const MyParcel = () => {
         return 'black';
     }
   };
-
+  const handleReviewClick = (id) => {
+    setSelectedParcel(id);
+    setOpenModal(true);
+  };
   return (
     <div className="md:w-11/12 mx-auto my-10">
       <h1 className="text-3xl text-center font-bold font-raleway mb-5">All My Parcel</h1>
@@ -70,6 +77,7 @@ const MyParcel = () => {
                 <th>Update</th>
                 <th>Cancel</th>
                 <th>Pay</th>
+                <th>Review</th>
               </tr>
             </thead>
             <tbody>
@@ -85,7 +93,8 @@ const MyParcel = () => {
                     <td style={{ color: getStatusColor(parcel.status) }}>{parcel?.status}</td>
                     <td><button onClick={() => navigate(`/dashboard/myParcel/${parcel._id}`)} disabled={parcel.status !== "Pending"} className="btn btn-xs btn-warning text-[#fff]">update</button></td>
                     <td><button disabled={parcel.status !== "Pending"} onClick={() => handleCancel(parcel._id)} className="btn btn-xs btn-error text-[#fff]">cancel</button></td>
-                    <td><button className="btn btn-xs btn-success text-[#fff]" onClick={()=>navigate(`/dashboard/payment/${parcel._id}`)} disabled={parcel.status !== "Delivered"}>pay</button></td>
+                    <td><button className="btn btn-xs btn-success text-[#fff]" onClick={() => navigate(`/dashboard/payment/${parcel._id}`)} disabled={parcel.status !== "Delivered" || parcel.paymentStatus === 'Success'}>pay</button></td>
+                    <td><button onClick={() => handleReviewClick(parcel.deliveryManId)} className="bg-gray-700 text-white rounded-lg btn-xs btn cursor-pointer" disabled={parcel?.paymentStatus !== "Success"}>Review</button></td>
                   </tr>
                 ))
               }
@@ -93,6 +102,9 @@ const MyParcel = () => {
           </table>
         </div>
       </div>
+      {
+        openModal && <ReviewModal openModal={openModal} setOpenModal={setOpenModal} item={selectedParcel}/>
+      }
     </div>
   );
 };

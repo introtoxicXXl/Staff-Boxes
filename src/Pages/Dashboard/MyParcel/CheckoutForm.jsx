@@ -6,7 +6,6 @@ import { useEffect, useState } from "react";
 import useAuth from "../../../Hooks/useAuth";
 import Swal from "sweetalert2";
 import moment from "moment";
-import './CheckoutForm.css';
 
 const CheckoutForm = () => {
     const { user } = useAuth();
