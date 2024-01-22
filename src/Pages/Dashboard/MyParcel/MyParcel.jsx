@@ -85,7 +85,7 @@ const MyParcel = () => {
                     <td style={{ color: getStatusColor(parcel.status) }}>{parcel?.status}</td>
                     <td><button onClick={() => navigate(`/dashboard/myParcel/${parcel._id}`)} disabled={parcel.status !== "Pending"} className="btn btn-xs btn-warning text-[#fff]">update</button></td>
                     <td><button disabled={parcel.status !== "Pending"} onClick={() => handleCancel(parcel._id)} className="btn btn-xs btn-error text-[#fff]">cancel</button></td>
-                    <td><button className="btn btn-xs btn-success text-[#fff]" disabled={parcel.status !== "Delivered"}>pay</button></td>
+                    <td><button className="btn btn-xs btn-success text-[#fff]" onClick={()=>navigate(`/dashboard/payment/${parcel._id}`)} disabled={parcel.status !== "Delivered"}>pay</button></td>
                   </tr>
                 ))
               }

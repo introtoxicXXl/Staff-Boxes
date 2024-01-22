@@ -18,6 +18,7 @@ import AdminProfile from "../Pages/Dashboard/AdminDashboard/AdminProfile";
 import MyDeliveryList from "../Pages/Dashboard/DeliveryMan/MyDeliveryList";
 import AdminRoute from './AdminRoute';
 import Review from "../Pages/Dashboard/DeliveryMan/Review";
+import Payment from "../Pages/Dashboard/MyParcel/Payment";
  const Router = createBrowserRouter([
     {
       path: "/",
@@ -64,6 +65,10 @@ import Review from "../Pages/Dashboard/DeliveryMan/Review";
         {
           path:'/dashboard/myParcel/:id',
           element:<MyParcelUpdate/>
+        },
+        {
+          path:'/dashboard/payment/:id',
+          element:<Payment/>
         },
 
 
