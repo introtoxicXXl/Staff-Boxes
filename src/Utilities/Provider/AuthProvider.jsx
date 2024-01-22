@@ -30,12 +30,17 @@ const AuthProvider = ({ children }) => {
   }
   const updateUser = (user, img) => {
     setLoading(true)
-    const displayName = `${user.firstName} ${user.lastName}`;
-    const number = user.phoneNumber;
-    updateProfile(auth.currentUser, {
+    const displayName = `${user?.firstName} ${user?.lastName}`;
+    const number = user?.phoneNumber;
+    return updateProfile(auth.currentUser, {
       displayName: displayName,
       photoURL: img,
       phoneNumber: number
+    })
+  }
+  const updateImage = (img) => {
+    return updateProfile(auth.currentUser, {
+      photoURL: img,
     })
   }
 
@@ -78,6 +83,7 @@ const AuthProvider = ({ children }) => {
     updateUser,
     loading,
     logout,
+    updateImage
 
   }
   return (
