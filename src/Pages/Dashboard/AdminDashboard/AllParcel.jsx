@@ -2,15 +2,18 @@ import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import { useState } from "react";
 import CustomModal from "../../../Components/CustomMohal/CustomModal";
+import useAuth from "../../../Hooks/useAuth";
 
 const AllParcel = () => {
+  const { loading } = useAuth()
   const axiosSecure = useAxiosSecure();
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [modalData, setModalData] = useState('');
+  const [modalData, setModalData] = useState({});
   const { data: parcels = [], refetch } = useQuery({
     queryKey: ['parcel-data'],
+    enabled: !loading,
     queryFn: async () => {
-      const res = await axiosSecure.get(`bookParcel`);
+      const res = await axiosSecure.get(`/bookParcel`);
       return res.data
     }
   })
@@ -73,7 +76,9 @@ const AllParcel = () => {
             </tbody>
           </table>
         </div>
-        <CustomModal isOpen={isModalOpen} onClose={closeModal} parcel={modalData} refetch={refetch} />
+        {
+          isModalOpen && <CustomModal isOpen={isModalOpen} onClose={closeModal} parcel={modalData} refetch={refetch} />
+        }
       </div >
     </div >
   );

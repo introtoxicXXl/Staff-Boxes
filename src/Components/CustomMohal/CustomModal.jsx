@@ -15,7 +15,7 @@ const CustomModal = ({ isOpen, onClose, parcel, refetch }) => {
     }
   })
   const onSubmit = (data) => {
-    axiosSecure.patch(`/admin/updateParcel/${parcel._id}`, {...data})
+    axiosSecure.patch(`/admin/updateParcel/${parcel?._id}`, { ...data })
     refetch();
     onClose()
   }
@@ -31,14 +31,18 @@ const CustomModal = ({ isOpen, onClose, parcel, refetch }) => {
               className="select select-bordered w-full select-sm"
             >
               <option disabled>Select Delivery Man</option>
-              {
-                items.map(item => <option key={item._id} value={item._id}>{`${item.firstName} ${item.lastName}`}</option>)
-              }
+              {Array.isArray(items) ? (
+                items.map(item => (
+                  <option key={item._id} value={item._id}>{`${item.firstName} ${item.lastName}`}</option>
+                ))
+              ) : (
+                <p>Data is not in the expected format</p>
+              )}
             </select>
             <select
               {...register('status')}
               className="select select-bordered w-full select-sm"
-              defaultValue={parcel.status}>
+              defaultValue={parcel?.status}>
               <option disabled >Select Status</option>
               <option>Pending</option>
               <option>On The Way</option>

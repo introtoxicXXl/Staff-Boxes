@@ -66,7 +66,6 @@ const CheckoutForm = () => {
             console.log(paymentErr)
         } else {
             if (paymentIntent.status === 'succeeded') {
-                console.log(paymentIntent)
                 const paymentInfo = {
                     name: user?.displayName || 'Anonymous',
                     email: user?.email || 'Anonymous',
@@ -78,7 +77,6 @@ const CheckoutForm = () => {
                     paymentStatus: 'Success'
                 }
                 const res = await axiosSecure.post('/payment', paymentInfo);
-                console.log(res.data)
                 if (res.data.insertedId) {
                     Swal.fire({
                         title: "Congress",

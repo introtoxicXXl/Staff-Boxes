@@ -23,7 +23,6 @@ const AdminProfile = () => {
       return res.data
     }
   })
-  console.log(stat)
   const handleImageChange = (e) => {
     const selectedImage = e.target.files[0];
 
