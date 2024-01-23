@@ -9,6 +9,7 @@ import moment from "moment";
 
 const CheckoutForm = () => {
     const { user } = useAuth();
+    const[loading,setLoading]=useState(false)
     const axiosSecure = useAxiosSecure();
     const { id } = useParams();
     const stripe = useStripe();
@@ -22,7 +23,6 @@ const CheckoutForm = () => {
         }
     })
     const price = item.price;
-    console.log(item)
     useEffect(() => {
         if (price) {
             axiosSecure.post('/create-payment-intent', { price: price })
@@ -32,6 +32,7 @@ const CheckoutForm = () => {
         }
     }, [axiosSecure, price])
     const handleSubmit = async (e) => {
+        setLoading(true)
         e.preventDefault();
         if (!stripe || !elements) {
             return;
@@ -85,6 +86,7 @@ const CheckoutForm = () => {
                         icon: "success"
                     });
                     refetch();
+                    setLoading(false)
                 }
             }
         }
@@ -105,7 +107,8 @@ const CheckoutForm = () => {
                     </div>
                     <div className="mt-5 flex justify-between items-center font-medium">
                         <h2 className="md:text-xl text-gray-800 mr-5">{item?.price} Taka</h2>
-                        <button className="bg-slate-700 text-white px-6 py-2 rounded-lg font-semibold md:text-base sm:text-sm text-[12px] hover:bg-slate-900" disabled={!stripe || !clientSecret} type="submit" onClick={handleSubmit}>Pay</button>
+                        <button className="bg-slate-700 text-white px-6 py-2 rounded-lg font-semibold md:text-base sm:text-sm text-[12px] hover:bg-slate-900" disabled={!stripe || !clientSecret} type="submit" onClick={handleSubmit}>
+                        {loading ? <span className="loading loading-spinner"></span> : 'Pay'}</button>
                     </div>
                 </div>
             </div>

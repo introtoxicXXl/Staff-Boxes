@@ -10,18 +10,20 @@ import { Bar, BarChart, CartesianGrid, Legend, Line, LineChart, ResponsiveContai
 
 const image_Api_Key = import.meta.env.VITE_IMAGE_BB_API_KEY;
 const image_Api = `https://api.imgbb.com/1/upload?key=${image_Api_Key}`;
+
 const AdminProfile = () => {
   const [loading, setLoading] = useState(false);
   const { user, updateImage } = useAuth();
   const [image, setImage] = useState(null);
   const axiosSecure = useAxiosSecure();
-  const { data: stat = {} } = useQuery({
+  const { data: stat } = useQuery({
     queryKey: ['adminStat'],
     queryFn: async () => {
       const res = await axiosSecure.get('/admin-stat');
       return res.data
     }
   })
+  console.log(stat)
   const handleImageChange = (e) => {
     const selectedImage = e.target.files[0];
 
@@ -62,13 +64,14 @@ const AdminProfile = () => {
     }
 
   }
-  const chartData = stat.parcelCountResult.map((item) => ({
-    bookingDate: item.bookingDate,
-    parcelCount: item.parcelCount,
+  const chartData = stat?.parcelCountResult.map((item) => ({
+    bookingDate: item?.bookingDate,
+    parcelCount: item?.parcelCount,
   }));
-  const paymentStatusResult = stat.paymentStatusResult;
-  const pendingCount = paymentStatusResult.find((item) => item.paymentStatus === 'Pending')?.count || 0;
-  const successCount = paymentStatusResult.find((item) => item.paymentStatus === 'Success')?.count || 0;
+  const paymentStatusResult = stat?.paymentStatusResult;
+  const pendingCount = (paymentStatusResult?.find(item => item.paymentStatus === 'Pending') || {}).count || 0;
+  const successCount = (paymentStatusResult?.find(item => item.paymentStatus === 'Success') || {}).count || 0;
+  
 
   const lineChartData = [
     { name: 'Pending', count: pendingCount },
@@ -100,8 +103,8 @@ const AdminProfile = () => {
         </div>
         <button className="btn btn-outline btn-accent btn-sm mt-5" onClick={handleUploadImage}>Upload Image {loading && <span className="loading loading-spinner"></span>}</button>
       </div>
-      <div className="flex gap-5 mt-10 lg:flex-row flex-col">
-        <div>
+      <div className="flex justify-between gap-5 mt-10 lg:flex-row flex-col">
+        <div className="basis-1/2">
           <ResponsiveContainer width="100%" height={400}>
             <BarChart data={chartData} margin={{ top: 20, right: 20, bottom: 20, left: 20 }}>
               <Bar dataKey="parcelCount" fill="#8884d8" />
@@ -112,7 +115,7 @@ const AdminProfile = () => {
             </BarChart>
           </ResponsiveContainer>
         </div>
-        <div>
+        <div className="basis-1/2">
         <ResponsiveContainer width="100%" height={400}>
           <LineChart
             width={500}

@@ -19,7 +19,6 @@ const CustomModal = ({ isOpen, onClose, parcel, refetch }) => {
     refetch();
     onClose()
   }
-console.log(items)
   return (
     <dialog open={isOpen} className="modal">
       <div className="modal-box lg:w-1/3 max-w-5xl">
