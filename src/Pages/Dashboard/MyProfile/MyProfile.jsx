@@ -19,7 +19,6 @@ const MyProfile = () => {
       return res.data;
     }
   })
-  console.log(userStat)
   const handleImageChange = (e) => {
     const selectedImage = e.target.files[0];
 
