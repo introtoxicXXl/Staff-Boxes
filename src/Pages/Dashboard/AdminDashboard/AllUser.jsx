@@ -16,9 +16,9 @@ const AllUser = () => {
             return res.data;
         }
     })
-    const handleMakeDeliveryAdmin = (id, role, name) => {
+    const handleMakeDeliveryAdmin = (id, role, name, item) => {
         Swal.fire({
-            title: `Are you sure you want to make ${name} ${role}?`,
+            title: `Are you sure you want to make ${item?.firstName} ${item?.lastName} ${role}?`,
             icon: "warning",
             showCancelButton: true,
             confirmButtonColor: "#3085d6",
@@ -26,11 +26,11 @@ const AllUser = () => {
             confirmButtonText: "Yes"
         }).then(async (result) => {
             if (result.isConfirmed) {
-                const res = await axiosSecure.patch(`/users/admin/${id}`, { role })
+                const res = await axiosSecure.patch(`/users/admin/${id}`, { ...item, role })
                 if (res.data.modifiedCount > 0) {
                     Swal.fire({
                         title: "Congress",
-                        text: `${name} is ${role} now`,
+                        text: `${item?.firstName} ${item?.lastName} is ${role} now`,
                         icon: "success"
                     });
                     refetch()
@@ -67,7 +67,7 @@ const AllUser = () => {
                                         {index + 1}
                                     </th>
                                     <td>
-                                        {item?.name}
+                                        {`${item?.firstName} ${item?.lastName}`}
                                     </td>
                                     <td>
                                         {item.phoneNumber}
@@ -84,7 +84,7 @@ const AllUser = () => {
                                         {
                                             item.role === 'Delivery Man' ? "Delivery Man" :
                                                 item.role === 'Admin' ? "Admin" :
-                                                    <button onClick={() => handleMakeDeliveryAdmin(item._id, 'Delivery Man', item.name)} className="btn btn-outline btn-warning">
+                                                    <button onClick={() => handleMakeDeliveryAdmin(item._id, 'Delivery Man', item.name, item)} className="btn btn-outline btn-warning">
                                                         <CiDeliveryTruck className="text-lg" />
                                                     </button>
                                         }

@@ -65,7 +65,8 @@ const BookParcel = () => {
       trackingID,
       status,
       bookingDate,
-      approximateDate
+      approximateDate,
+      paymentStatus:'Pending'
     }
     setFormData(bookingsInfo);
 

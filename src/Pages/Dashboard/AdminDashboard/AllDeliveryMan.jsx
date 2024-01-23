@@ -11,6 +11,15 @@ const AllDeliveryMan = () => {
             return res.data;
         }
     })
+    const calculateAverageRating = (reviews) => {
+        if (!reviews || reviews.length === 0) {
+            return 0;
+        }
+
+        const totalRating = reviews.reduce((sum, review) => sum + review.rating, 0);
+        return totalRating / reviews.length;
+    };
+    console.log(deliveryMan)
     return (
         <div className="lg:w-11/12 mx-auto my-10">
             <h1 className="text-3xl font-bold font-raleway text-center mb-5">This is All Delivery Man</h1>
@@ -44,10 +53,9 @@ const AllDeliveryMan = () => {
                                     }
                                 </td>
                                 <th className="flex items-center">
-                                    {item.review}<FaStar className="ml-2 text-yellow-500"/>
-
+                                    {calculateAverageRating(item.reviews).toFixed(1)}<FaStar className="ml-2 text-yellow-500" />
                                 </th>
-                               
+
                             </tr>)
                         }
                     </tbody>
