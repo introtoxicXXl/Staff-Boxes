@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { useState } from "react";
 import ReviewModal from "../../../Components/ReviewModal/ReviewModal";
+import { Helmet } from "react-helmet";
 
 const MyParcel = () => {
   const { user } = useAuth();
@@ -62,6 +63,7 @@ const MyParcel = () => {
   };
   return (
     <div className="md:w-11/12 mx-auto my-10">
+    <Helmet><title>My Parcel</title></Helmet>
       <h1 className="text-3xl text-center font-bold font-raleway mb-5">All My Parcel</h1>
       <div className="mb-4">
         <label className="form-control w-full max-w-xs">

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import SquishyCard from "../../Components/SquishyCard/SquishyCard";
 import Loader from "../../Components/Loader/Loader";
+import { Helmet } from "react-helmet";
 
 const Pricing = () => {
     const [loading, setLoading] = useState(true);
@@ -70,6 +71,7 @@ const Pricing = () => {
 
     return (
         <div>
+        <Helmet><title>Pricing</title></Helmet>ti
             {
                 loading ? <Loader /> : <div className="container mx-auto my-20 py-10">
                     <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-10 lg:px-0 px-3">

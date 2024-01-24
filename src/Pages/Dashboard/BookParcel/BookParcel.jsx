@@ -5,6 +5,7 @@ import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from './../../../Hooks/useAxiosSecure';
 import Modal from "../../../Components/Modal/Modal";
 import moment from "moment";
+import { Helmet } from "react-helmet";
 
 const BookParcel = () => {
   const [loading, setLoading] = useState(false);
@@ -79,6 +80,7 @@ const BookParcel = () => {
   }
   return (
     <div className="md:w-11/12 mx-auto my-10 relative">
+    <Helmet><title>Book Parcel</title></Helmet>
       <h1 className="text-center text-2xl font-bold font-raleway">Hello, Book your valuable parcel</h1>
       <div>
         <form className="w-full mt-10" onSubmit={handleSubmit(onSubmit)}>

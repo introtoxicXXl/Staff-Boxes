@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import { FaStar } from "react-icons/fa";
+import { Helmet } from "react-helmet";
 
 const AllDeliveryMan = () => {
     const axiosSecure = useAxiosSecure();
@@ -13,6 +14,7 @@ const AllDeliveryMan = () => {
     })
     return (
         <div className="lg:w-11/12 mx-auto my-10">
+        <Helmet><title>Admin-All Delivery Man</title></Helmet>
             <h1 className="text-3xl font-bold font-raleway text-center mb-5">This is All Delivery Man</h1>
             <div className="overflow-x-auto">
                 <table className="table">

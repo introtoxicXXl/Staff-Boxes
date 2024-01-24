@@ -5,6 +5,7 @@ import Swal from "sweetalert2";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
 import { Bar, BarChart, CartesianGrid, Legend, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
+import { Helmet } from "react-helmet";
 
 
 
@@ -80,6 +81,7 @@ const AdminProfile = () => {
 
   return (
     <div className="lg:w-11/12 mx-auto my-10">
+    <Helmet><title>Admin Dashboard</title></Helmet>
       <div className="flex flex-col justify-center items-center">
         <div className="flex flex-wrap">
           <label htmlFor="imageInput" className="relative group">

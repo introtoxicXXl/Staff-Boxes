@@ -4,6 +4,7 @@ import { CiDeliveryTruck } from "react-icons/ci";
 import useAuth from "../../../Hooks/useAuth";
 import { FaUser } from "react-icons/fa";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet";
 
 const AllUser = () => {
     const axiosSecure = useAxiosSecure();
@@ -44,6 +45,7 @@ const AllUser = () => {
 
     return (
         <div className="lg:w-11/12 mx-auto my-10">
+        <Helmet><title>Admin-All Users</title></Helmet>
             <h1 className="text-3xl text-center font-raleway font-bold mb-5">Total Users:{users.length}</h1>
             <div>
                 <div className="overflow-x-auto">

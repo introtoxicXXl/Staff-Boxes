@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import useAuth from "../../../Hooks/useAuth";
 import { Rating } from "@smastrom/react-rating";
+import { Helmet } from "react-helmet";
 
 const Review = () => {
   const axiosSecure = useAxiosSecure();
@@ -32,6 +33,7 @@ const Review = () => {
 
   return (
     <div className="lg:w-11/12 mx-auto my-10">
+    <Helmet><title>My Reviews</title></Helmet>
       <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5">
           {reviewItems}
       </div>

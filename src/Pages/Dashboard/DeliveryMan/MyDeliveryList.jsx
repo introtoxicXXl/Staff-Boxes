@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import useAuth from "../../../Hooks/useAuth";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet";
 
 const MyDeliveryList = () => {
     const { user } = useAuth();
@@ -60,6 +61,7 @@ const MyDeliveryList = () => {
     }
     return (
         <div className="lg:w-11/12 mx-auto my-10">
+        <Helmet><title>My Delivery List</title></Helmet>
             <h1 className="text-3xl text-center font-bold font-raleway bt-5">This is MyDeliveryList</h1>
             <div className="overflow-x-auto">
                 <table className="table table-xs overflow-x-scroll">

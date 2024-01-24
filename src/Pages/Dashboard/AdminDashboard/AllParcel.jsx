@@ -3,6 +3,7 @@ import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import { useState } from "react";
 import CustomModal from "../../../Components/CustomMohal/CustomModal";
 import useAuth from "../../../Hooks/useAuth";
+import { Helmet } from "react-helmet";
 
 const AllParcel = () => {
   const { loading } = useAuth()
@@ -49,6 +50,7 @@ const AllParcel = () => {
   };
   return (
     <div className="lg:w-11/12 mx-auto my-10">
+    <Helmet><title>Admin-All Parcel</title></Helmet>
       <h1 className="text-3xl text-center font-raleway font-bold mb-5">This is All Parcel</h1>
       <div className="flex justify-center">
         <div className="mb-4 flex space-x-4 items-end md:flex-row flex-col">
