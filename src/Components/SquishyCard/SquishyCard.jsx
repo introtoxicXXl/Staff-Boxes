@@ -1,8 +1,11 @@
 import { motion } from "framer-motion";
 import { PropTypes } from 'prop-types';
 import { IoMdCheckmarkCircleOutline } from "react-icons/io";
+import useAuth from './../../Hooks/useAuth';
+import { Link } from "react-router-dom";
 
 const SquishyCard = ({ service }) => {
+
     return (
         <section className="">
             <div className="mx-auto ">
@@ -13,6 +16,7 @@ const SquishyCard = ({ service }) => {
 };
 
 const Card = ({ service }) => {
+    const {user}=useAuth();
     const { title, subTitle, description, points, bgColor, price } = service;
 
     return (
@@ -61,9 +65,13 @@ const Card = ({ service }) => {
                 </ul>
             </div>
             <div className="mt-10">
-                <button className="absolute bottom-4 left-4 right-4 z-20 rounded border-2 border-white bg-white py-2 text-center font-mono font-black uppercase text-neutral-800 backdrop-blur transition-colors hover:bg-white/30 hover:text-white">
+                {
+                    user ? <button className="absolute bottom-4 left-4 right-4 z-20 rounded border-2 border-white bg-white py-2 text-center font-mono font-black uppercase text-neutral-800 backdrop-blur transition-colors hover:bg-white/30 hover:text-white">
+                    Order Now
+                </button>:<Link to='/login'><button className="absolute bottom-4 left-4 right-4 z-20 rounded border-2 border-white bg-white py-2 text-center font-mono font-black uppercase text-neutral-800 backdrop-blur transition-colors hover:bg-white/30 hover:text-white">
                     Sign Up Now
-                </button>
+                </button></Link>
+                }
             </div>
             <Background />
         </motion.div>
