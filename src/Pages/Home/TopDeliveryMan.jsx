@@ -13,8 +13,8 @@ const TopDeliveryMan = () => {
   })
 
   return (
-    <div className="container mx-auto">
-      <h1 className="lg:text-5xl md:text-4xl text-3xl text-center font-raleway font-bold">Top Delivery Man</h1>
+    <div className="container mx-auto my-10">
+      <h1 className="lg:text-5xl md:text-4xl text-3xl text-center font-raleway font-bold mb-5">Top Delivery Man</h1>
       <div>
         <div className='grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5'>
           {
