@@ -14,8 +14,8 @@ const Home = () => {
             <Helmet><title>Home</title></Helmet>
             <Banner/>
             <Feature/>
-            <HomeState/>
             <TopDeliveryMan/>
+            <HomeState/>
             <OurService/>
             <FeatureVideo/>
             <Review/>

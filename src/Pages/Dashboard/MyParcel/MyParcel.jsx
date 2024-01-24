@@ -9,13 +9,14 @@ import ReviewModal from "../../../Components/ReviewModal/ReviewModal";
 const MyParcel = () => {
   const { user } = useAuth();
   const [openModal, setOpenModal] = useState(false);
+  const [selectedStatus, setSelectedStatus] = useState("all");
   const [selectedParcel, setSelectedParcel] = useState(null);
   const axiosSecure = useAxiosSecure();
   const navigate = useNavigate();
   const { data: parcels = [], refetch } = useQuery({
-    queryKey: ['parcel-data', user.email],
+    queryKey: ['parcel-data', user.email, selectedStatus],
     queryFn: async () => {
-      const res = await axiosSecure.get(`bookParcel/${user.email}`);
+      const res = await axiosSecure.get(`bookParcel/${user.email}?status=${selectedStatus}`);
       return res.data
     }
   })
@@ -62,6 +63,23 @@ const MyParcel = () => {
   return (
     <div className="md:w-11/12 mx-auto my-10">
       <h1 className="text-3xl text-center font-bold font-raleway mb-5">All My Parcel</h1>
+      <div className="mb-4">
+        <label className="form-control w-full max-w-xs">
+          <div className="label">
+            <span className="label-text">Filter by status</span>
+          </div>
+          <select
+            value={selectedStatus}
+            onChange={(e) => setSelectedStatus(e.target.value)}
+            className="select select-bordered">
+            <option value='all'>All</option>
+            <option value='pending'>Pending</option>
+            <option value='on the way'>On The Way</option>
+            <option value='Cancel'>Cancel</option>
+            <option value='Delivered'>Delivered</option>
+          </select>
+        </label>
+      </div>
       <div>
         <div className="overflow-x-auto">
           <table className="table table-md overflow-x-scroll">
@@ -103,7 +121,7 @@ const MyParcel = () => {
         </div>
       </div>
       {
-        openModal && <ReviewModal openModal={openModal} setOpenModal={setOpenModal} item={selectedParcel}/>
+        openModal && <ReviewModal openModal={openModal} setOpenModal={setOpenModal} item={selectedParcel} />
       }
     </div>
   );
