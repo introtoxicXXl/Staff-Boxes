@@ -26,16 +26,14 @@ const SocialLogin = () => {
           phoneNumber: res.user.phoneNumber || ' ',
           role: 'Customer',
         }
-        const result = await axiosPublic.post('/users', userInfo)
-        if (result.data.insertedId) {
-          Swal.fire({
-            icon: "success",
-            title: "Login Successfully"
-          });
-          navigate(form, { replace: true })
-          setLoading(false)
-        }
-      }).catch((err)=>{
+        await axiosPublic.post('/users', userInfo)
+        Swal.fire({
+          icon: "success",
+          title: "Login Successfully"
+        });
+        navigate(form, { replace: true })
+        setLoading(false)
+      }).catch((err) => {
         console.log(err)
         setLoading(false)
       })

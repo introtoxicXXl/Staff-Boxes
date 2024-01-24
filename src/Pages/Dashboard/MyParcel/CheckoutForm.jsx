@@ -6,33 +6,37 @@ import { useEffect, useState } from "react";
 import useAuth from "../../../Hooks/useAuth";
 import Swal from "sweetalert2";
 import moment from "moment";
+import Confetti from 'react-confetti';
 
 const CheckoutForm = () => {
     const { user } = useAuth();
-    const[loading,setLoading]=useState(false)
+    const [loading, setLoading] = useState(false);
     const axiosSecure = useAxiosSecure();
     const { id } = useParams();
     const stripe = useStripe();
     const elements = useElements();
     const [clientSecret, setClientSecret] = useState('');
+    const [paymentSuccessful, setPaymentSuccessful] = useState(false);
     const { data: item = {}, refetch } = useQuery({
         queryKey: ['payment'],
         queryFn: async () => {
             const res = await axiosSecure.get(`/bookMyParcel/${id}`);
-            return res.data
+            return res.data;
         }
-    })
+    });
     const price = item.price;
+
     useEffect(() => {
         if (price) {
             axiosSecure.post('/create-payment-intent', { price: price })
                 .then(res => {
-                    setClientSecret(res.data.clientSecret)
-                })
+                    setClientSecret(res.data.clientSecret);
+                });
         }
-    }, [axiosSecure, price])
+    }, [axiosSecure, price]);
+
     const handleSubmit = async (e) => {
-        setLoading(true)
+        setLoading(true);
         e.preventDefault();
         if (!stripe || !elements) {
             return;
@@ -52,7 +56,7 @@ const CheckoutForm = () => {
             console.log('[PaymentMethod]', paymentMethod);
         }
 
-        // conform payment 
+        // Confirm payment
         const { paymentIntent, error: paymentErr } = await stripe.confirmCardPayment(clientSecret, {
             payment_method: {
                 card: card,
@@ -61,11 +65,14 @@ const CheckoutForm = () => {
                     name: user?.displayName || 'Anonymous'
                 }
             }
-        })
+        });
+
         if (paymentErr) {
-            console.log(paymentErr)
+            console.log(paymentErr);
         } else {
             if (paymentIntent.status === 'succeeded') {
+                setPaymentSuccessful(true);
+
                 const paymentInfo = {
                     name: user?.displayName || 'Anonymous',
                     email: user?.email || 'Anonymous',
@@ -75,20 +82,22 @@ const CheckoutForm = () => {
                     deliveryManId: item.deliveryManId,
                     date: moment().format('LLL'),
                     paymentStatus: 'Success'
-                }
+                };
+
                 const res = await axiosSecure.post('/payment', paymentInfo);
+
                 if (res.data.insertedId) {
                     Swal.fire({
-                        title: "Congress",
+                        title: "Congratulations",
                         text: `${price} taka payment complete`,
                         icon: "success"
                     });
                     refetch();
-                    setLoading(false)
+                    setLoading(false);
                 }
             }
         }
-    }
+    };
 
     return (
         <div className="md:w-11/12 mx-auto h-screen flex justify-evenly items-center lg:flex-row flex-col gap-5">
@@ -101,15 +110,18 @@ const CheckoutForm = () => {
                 <div className=" bg-slate-300/20 px-6 py-4  rounded-2xl space-y-6 shadow-md">
                     <div className="space-y-2">
                         <h2 className="text-slate-800 font-medium md:text-xl sm:text-lg ">{item?.parcelType}</h2>
-
                     </div>
                     <div className="mt-5 flex justify-between items-center font-medium">
                         <h2 className="md:text-xl text-gray-800 mr-5">{item?.price} Taka</h2>
                         <button className="bg-slate-700 text-white px-6 py-2 rounded-lg font-semibold md:text-base sm:text-sm text-[12px] hover:bg-slate-900" disabled={!stripe || !clientSecret} type="submit" onClick={handleSubmit}>
-                        {loading ? <span className="loading loading-spinner"></span> : 'Pay'}</button>
+                            {loading ? <span className="loading loading-spinner"></span> : 'Pay'}
+                        </button>
                     </div>
                 </div>
             </div>
+            {paymentSuccessful && <Confetti 
+                recycle:false
+            />}
         </div>
     );
 };

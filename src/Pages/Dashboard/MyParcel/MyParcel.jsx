@@ -72,9 +72,9 @@ const MyParcel = () => {
             value={selectedStatus}
             onChange={(e) => setSelectedStatus(e.target.value)}
             className="select select-bordered">
-            <option value='all'>All</option>
-            <option value='pending'>Pending</option>
-            <option value='on the way'>On The Way</option>
+            <option value='All'>All</option>
+            <option value='Pending'>Pending</option>
+            <option value='On The Way'>On The Way</option>
             <option value='Cancel'>Cancel</option>
             <option value='Delivered'>Delivered</option>
           </select>

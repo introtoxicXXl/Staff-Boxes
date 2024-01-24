@@ -1,9 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
+import CountUp from 'react-countup';
 
 const HomeState = () => {
   const axiosPublic = useAxiosPublic();
-  const { data:homeStat={} } = useQuery({
+  const { data: homeStat = {} } = useQuery({
     queryKey: ['homeStat'],
     queryFn: async () => {
       const res = await axiosPublic.get('/home-stat');
@@ -18,7 +19,13 @@ const HomeState = () => {
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="inline-block w-8 h-8 stroke-current"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
           </div>
           <div className="stat-title">Total User</div>
-          <div className="stat-value text-primary">{homeStat?.totalUser}</div>
+          <div className="stat-value text-primary">
+            <CountUp
+              start={0}
+              end={homeStat?.totalUser}
+              duration={5}
+            ></CountUp>
+          </div>
           <div className="stat-desc">20% more than last month</div>
         </div>
 
@@ -27,14 +34,31 @@ const HomeState = () => {
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="inline-block w-8 h-8 stroke-current"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
           </div>
           <div className="stat-title">Total Delivery</div>
-          <div className="stat-value text-secondary">{homeStat?.totalDeliveredCount}</div>
+          <div className="stat-value text-secondary">
+          <CountUp
+              start={0}
+              end={homeStat?.totalDeliveredCount}
+              duration={5}
+            ></CountUp>
+            </div>
           <div className="stat-desc">54% more than last month</div>
         </div>
 
         <div className="stat">
-          <div className="stat-value">{homeStat?.deliveredPercentage}%</div>
+          <div className="stat-value">
+          <CountUp
+              start={0}
+              end={Math.ceil(homeStat?.deliveredPercentage)}
+              duration={5}
+            ></CountUp>
+          %</div>
           <div className="stat-title">Tasks done</div>
-          <div className="stat-desc text-secondary">{homeStat?.remainingPercentage} tasks remaining</div>
+          <div className="stat-desc text-secondary">
+          <CountUp
+              start={0}
+              end={Math.ceil(homeStat?.remainingPercentage)}
+              duration={5}
+            ></CountUp>% tasks remaining</div>
         </div>
 
       </div>
